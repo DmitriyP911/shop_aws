@@ -8,37 +8,49 @@ export const products: Product[] = [
     description: "Short Product Description1",
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
     price: 24,
-    title: "ProductOne",
+    title: "Laptop HP",
+    poster:
+      "https://content1.rozetka.com.ua/goods/images/big_tile/375424610.jpg",
   },
   {
     description: "Short Product Description7",
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a1",
     price: 15,
-    title: "ProductTitle",
+    title: "Samsung TV",
+    poster:
+      "https://content.rozetka.com.ua/goods/images/big_tile/412242373.jpg",
   },
   {
     description: "Short Product Description2",
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a3",
     price: 23,
-    title: "Product",
+    title: "Power station",
+    poster:
+      "https://content1.rozetka.com.ua/goods/images/big_tile/471357590.jpg",
   },
   {
     description: "Short Product Description4",
     id: "7567ec4b-b10c-48c5-9345-fc73348a80a1",
     price: 15,
-    title: "ProductTest",
+    title: "Samsung smartphone",
+    poster:
+      "https://content.rozetka.com.ua/goods/images/big_tile/398085826.jpg",
   },
   {
-    description: "Short Product Descriptio1",
+    description: "Short Product Description1",
     id: "7567ec4b-b10c-48c5-9445-fc73c48a80a2",
     price: 23,
-    title: "Product2",
+    title: "Airpods",
+    poster:
+      "https://content.rozetka.com.ua/goods/images/big_tile/285470239.jpg",
   },
   {
     description: "Short Product Description7",
     id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
     price: 15,
-    title: "ProductName",
+    title: "Canon",
+    poster:
+      "https://content.rozetka.com.ua/goods/images/big_tile/304428963.jpg",
   },
 ];
 
@@ -53,6 +65,8 @@ export const cart: CartItem[] = [
       id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
       price: 24,
       title: "ProductOne",
+      poster:
+        "https://content1.rozetka.com.ua/goods/images/big_tile/375424610.jpg",
     },
     count: 2,
   },
@@ -62,6 +76,8 @@ export const cart: CartItem[] = [
       id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
       price: 15,
       title: "ProductName",
+      poster:
+        "https://content1.rozetka.com.ua/goods/images/big_tile/375424610.jpg",
     },
     count: 5,
   },

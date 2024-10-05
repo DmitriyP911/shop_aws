@@ -18,6 +18,8 @@ test("Renders products list", async () => {
       description: "Product 1 description",
       price: 1,
       count: 1,
+      poster:
+        "https://content.rozetka.com.ua/goods/images/big_tile/285470239.jpg",
     },
     {
       id: "2",
@@ -25,6 +27,8 @@ test("Renders products list", async () => {
       description: "Product 2 description",
       price: 2,
       count: 2,
+      poster:
+        "https://content.rozetka.com.ua/goods/images/big_tile/285470239.jpg",
     },
   ];
   server.use(
