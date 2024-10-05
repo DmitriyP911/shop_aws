@@ -14,24 +14,29 @@ const queryClient = new QueryClient({
   },
 });
 
-if (import.meta.env.DEV) {
-  const { worker } = await import("./mocks/browser");
-  worker.start({ onUnhandledRequest: "bypass" });
-}
+// Mocks are temporarily enabled in the production environment. This will be changed in the future.
 
-const container = document.getElementById("app");
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = createRoot(container!);
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <App />
-        </ThemeProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// if (import.meta.env.DEV) {
+import("./mocks/browser")
+  .then(({ worker }) => {
+    worker.start({ onUnhandledRequest: "bypass" });
+  })
+  .then(() => {
+    const container = document.getElementById("app");
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const root = createRoot(container!);
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <App />
+            </ThemeProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+  });
+// }
