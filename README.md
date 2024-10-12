@@ -1,3 +1,8 @@
+# Homework task 2
+
+[S3 Link](http://mystorebucketaws.s3-website-us-east-1.amazonaws.com/)
+[CloudFrontLink](https://dpfus0454sdas.cloudfront.net/)
+
 # React-shop-cloudfront
 
 This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
