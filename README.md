@@ -1,6 +1,6 @@
 # Homework task 2
 
-[S3 Link](http://mystorebucketaws.s3-website-us-east-1.amazonaws.com/)
+[S3 Link](http://mystorebucketaws.s3-website-us-east-1.amazonaws.com/) - get products list from BE
 [CloudFrontLink](https://dpfus0454sdas.cloudfront.net/)
 
 # React-shop-cloudfront
