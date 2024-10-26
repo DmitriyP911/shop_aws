@@ -6,10 +6,13 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
-import { useAvailableProducts } from "~/queries/products";
+import { useAvailableProducts, useAllProducts } from "~/queries/products";
 
 export default function Products() {
-  const { data = [], isLoading } = useAvailableProducts();
+  // const { data = [], isLoading } = useAvailableProducts();
+  const { data = [], isLoading } = useAllProducts();
+
+  console.log(data);
 
   if (isLoading) {
     return <Typography>Loading...</Typography>;
@@ -18,14 +21,14 @@ export default function Products() {
   return (
     <Grid container spacing={4}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {data.map(({ count, ...product }, index) => (
+      {data.map(({ count, ...product }) => (
         <Grid item key={product.id} xs={12} sm={6} md={4}>
           <Card
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
             <CardMedia
-              sx={{ pt: "56.25%" }}
-              image={`https://source.unsplash.com/random?sig=${index}`}
+              sx={{ pt: "56.25%", backgroundSize: "contain" }}
+              image={product.poster}
               title="Image title"
             />
             <CardContent sx={{ flexGrow: 1 }}>

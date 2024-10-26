@@ -21,7 +21,7 @@ export default function PageProductImport() {
           component={Link}
           to={"/admin/product-form"}
         >
-          Create product
+          Create product!
         </Button>
       </Box>
       <ProductsTable />
