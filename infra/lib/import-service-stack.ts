@@ -6,6 +6,7 @@ import {
   Stack,
   Duration,
   aws_s3_notifications,
+  aws_sqs as sqs,
 } from "aws-cdk-lib";
 import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as lambda from "aws-cdk-lib/aws-lambda";
@@ -76,6 +77,10 @@ export class ImportServiceStack extends Stack {
     importResource.addMethod("GET", importProductsFileLambdaIntegration);
     importBucket.grantPut(importProductsFileLambda);
 
+    const catalogItemsQueue = new sqs.Queue(this, "catalogItemsQueue", {
+      visibilityTimeout: Duration.seconds(30),
+    });
+
     const importFileParserLambda = new lambda.Function(
       this,
       "importFileParser",
@@ -83,15 +88,21 @@ export class ImportServiceStack extends Stack {
         runtime: lambda.Runtime.NODEJS_20_X,
         memorySize: 128,
         timeout: Duration.seconds(5),
-        handler: "importFileParser.handler",
-        code: lambda.Code.fromAsset(path.join(__dirname, "./import")),
+        handler: "handler.importFileParser",
+        code: lambda.Code.fromAsset(path.join(__dirname, "./product-sqs")),
+        environment: {
+          QUEUE_URL: catalogItemsQueue.queueUrl,
+        },
       }
     );
+
     importBucket.addEventNotification(
       aws_s3.EventType.OBJECT_CREATED,
       new aws_s3_notifications.LambdaDestination(importFileParserLambda),
       { prefix: "uploaded/" }
     );
+
     importBucket.grantReadWrite(importFileParserLambda);
+    catalogItemsQueue.grantSendMessages(importFileParserLambda);
   }
 }
